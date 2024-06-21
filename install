@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# update system
-sudo apt update && sudo apt upgrade -y
-
 # install packages
-sudo apt install \
-  build-essential \
-  gh \
-  
+sudo apt install -y \
+  build-essential
 
 # symlink dotfiles
 # ln -s org link
 ln -s dotfiles/.zshrc ~/.zshrc
-ln -s dotfiles/.p10k ~/.zshrc
+ln -s dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # install packages from source
 # fzf  ./scripts/install-fzf
