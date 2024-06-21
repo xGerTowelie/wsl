@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# NOTE: 
+# This script will install nvim from package since
+# the distributed apt package isn't under maintainance
+# any more.
+
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# NOTE: 
+# This script will install fzf from source since
+# the zsh-integration isn't supported by the
+# apt package
+
+

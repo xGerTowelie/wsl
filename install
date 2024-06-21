@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# update system
+sudo apt update && sudo apt upgrade -y
+
+# install packages
+sudo apt install \
+  build-essential \
+  gh \
+  
+
+# symlink dotfiles
+# ln -s org link
+ln -s dotfiles/.zshrc ~/.zshrc
+ln -s dotfiles/.p10k ~/.zshrc
+
+# install packages from source
+# fzf  ./scripts/install-fzf
+# nvim ./scripts/install-nvim
+
+# setup git
+git config --global user.name "Towelie"
+git config --global user.email "marcelmaier1996@outlook.de"
+git config --global branch.default "Main"
+git config --global pull.rebase false
+git config --global core.editor "nvim"
+
+# change shell to zsh
+sudo chsh -s $(which zsh) $USER
