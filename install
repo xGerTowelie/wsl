@@ -16,7 +16,7 @@ ln -s dotfiles/.p10k.zsh ~/.p10k.zsh
 # setup git
 git config --global user.name "Towelie"
 git config --global user.email "marcelmaier1996@outlook.de"
-git config --global branch.default "Main"
+git config --global init.defaultBranch "main"
 git config --global pull.rebase false
 git config --global core.editor "nvim"
 
