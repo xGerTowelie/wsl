@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# NOTE: 
+# This script will install pyenv and setup additional configuration
+curl https://pyenv.run | bash

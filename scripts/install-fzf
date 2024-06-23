@@ -5,4 +5,8 @@
 # the zsh-integration isn't supported by the
 # apt package
 
-
+git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/projects/.fzf"
+"$HOME/projects/.fzf/install --no-key-bindings --no-completion --no-update-rc --no-fish --no-bash --no-zsh
+cp "$HOME/projects/.fzf/bin/fzf" "$HOME/bin"
+cp "$HOME/projects/.fzf/bin/fzf-tmux" "$HOME/bin"
+cp "$HOME/projects/.fzf/bin/fzf-preview.sh" "$HOME/bin"
