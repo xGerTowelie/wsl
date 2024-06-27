@@ -4,7 +4,7 @@
 # install packages
 sudo apt install -y \
     nodejs npm ripgrep libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
-    libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev \
+    libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev unzip \
     libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev zsh build-essential
 
 # moving dotfiles

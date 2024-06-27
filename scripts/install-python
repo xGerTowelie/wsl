@@ -3,3 +3,5 @@
 # NOTE: 
 # This script will install pyenv and setup additional configuration
 curl https://pyenv.run | bash
+pyenv install 3.7
+pyenv global 3.7
