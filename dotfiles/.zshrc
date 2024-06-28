@@ -50,7 +50,7 @@ zstyle ':completions:*' list-colors '${(s.:.)LS_COLORS}'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$PATH:$HOME/projects/.fzf/bin"
-export PATH="$PATH:$HOME/opt/go/bin"
+export PATH="$PATH:/opt/go/bin"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 alias ls="ls --color"
