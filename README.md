@@ -30,3 +30,9 @@ tasks to do:
 - change nvim config to install mason packages automatically
 	- tailwindcss
 	- eslint-lsp
+	- mkdnflow
+	- ...
+
+- install go
+- install teleport
+- setup teleport in zshrc
