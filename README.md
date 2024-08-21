@@ -20,7 +20,7 @@ change to your repository
 
 ```
 sudo add-apt-repository ppa:wslutilities/wslu \
-sudo apt update && sudo apt upgrade -y \
+  && sudo apt update && sudo apt upgrade -y \
   && sudo apt install gh wslu \
   && ssh-keygen \
   && gh auth login \
