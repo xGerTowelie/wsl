@@ -20,7 +20,7 @@ change to your repository
 
 ```
 sudo apt update && sudo apt upgrade -y \
-  && sudo apt install gh \
+  && sudo apt install gh wslview \
   && ssh-keygen \
   && gh auth login \
   && gh repo clone wsl ~/projects/wsl \
