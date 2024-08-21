@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # install packages
 sudo apt install -y \
     nodejs npm ripgrep libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
@@ -12,29 +11,25 @@ sudo apt install -y \
 mkdir ~/.local/bin
 
 # moving dotfiles
-cp "$HOME/projects/wsl/dotfiles/.zshrc" ~/.zshrc
-cp "$HOME/projects/wsl/dotfiles/.p10k.zsh" ~/.p10k.zsh
+cp ~/projects/wsl/dotfiles/.zshrc ~/.zshrc
+cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # install from source or prebuild binaries
-"$HOME/projects/wsl/scripts/install-fzf"
-"$HOME/projects/wsl/scripts/install-nvim"
-"$HOME/projects/wsl/scripts/install-python"
-"$HOME/projects/wsl/scripts/install-golang"
-"$HOME/projects/wsl/scripts/lua"
+~/projects/wsl/scripts/install-fzf
+~/projects/wsl/scripts/install-nvim
+~/projects/wsl/scripts/install-python
+~/projects/wsl/scripts/install-golang
+~/projects/wsl/scripts/install-lua
 
 # setup git
-read -p "Git user:" user
+read -p "Git display user:" user
 read -p "Git emai:" email
 
 git config --global user.name $user
 git config --global user.email $email
 git config --global init.defaultBranch "main"
 git config --global pull.rebase false
-
-read -p "Nvim as git editor? (y/n)" editor
-if [[ "$editor" == "y" ]]; then
-    git config --global core.editor "nvim"
-fi
+git config --global core.editor "nvim"
 
 # change shell to zsh
 chsh $USER -s /bin/zsh
