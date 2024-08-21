@@ -4,7 +4,7 @@
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 
 # unpack tar ball
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
+sudo tar -C ~/.local/bin -xzf nvim-linux64.tar.gz
 
 # remove tar ball
 rm nvim-linux64.tar.gz
