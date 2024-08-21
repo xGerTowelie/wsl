@@ -7,8 +7,14 @@ curl -L -R -O https://www.lua.org/ftp/lua-5.4.7.tar.gz
 tar zxf lua-5.4.7.tar.gz
 
 # compile with make
-cd lua-5.4.7
+cd lua-5.4.7/src
 make all test
 
 # store in local binary folder
 cp -p lua  ~/.local/bin
+
+# leave install folder
+cd ../..
+
+# delete old tar and folder
+rm -rf lua-5.4.7 lua-5.4.7.tar.gz

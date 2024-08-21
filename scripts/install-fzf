@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # clone fzf from source
-gh repo clone junegunn/fzf ~/projects/fzf --depth=1
+gh repo clone junegunn/fzf ~/projects/fzf -- --depth=1
 
 # run the install
-~/projects/.fzf/install \
+~/projects/fzf/install \
     --no-key-bindings \
     --no-completion \
     --no-update-rc \
