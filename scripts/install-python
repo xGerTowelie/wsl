@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# NOTE: 
-# This script will install pyenv and setup additional configuration
+# download and run install script
 curl https://pyenv.run | bash
+
+# install python version
 pyenv install 3.7
+
+# set global version
 pyenv global 3.7

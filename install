@@ -16,6 +16,7 @@ cp "$HOME/projects/wsl/dotfiles/.p10k.zsh" ~/.p10k.zsh
 "$HOME/projects/wsl/scripts/install-fzf"
 "$HOME/projects/wsl/scripts/install-nvim"
 "$HOME/projects/wsl/scripts/install-python"
+"$HOME/projects/wsl/scripts/install-golang"
 
 # setup git
 read -p "Git user:" user

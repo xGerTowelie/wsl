@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# download source
+curl -L -R -O https://www.lua.org/ftp/lua-5.4.7.tar.gz
+
+# unpack source files
+tar zxf lua-5.4.7.tar.gz
+
+# compile with make
+cd lua-5.4.7
+make all test
+
+# store in local binary folder
+cp -p lua  ~/.local/bin

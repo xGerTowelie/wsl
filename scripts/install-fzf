@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# NOTE: 
-# This script will install fzf from source since
-# the zsh-integration isn't supported by the
-# apt package
+# clone fzf from source
+gh repo clone junegunn/fzf ~/projects/fzf --depth=1
 
-git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/projects/.fzf"
-"$HOME/projects/.fzf/install --no-key-bindings --no-completion --no-update-rc --no-fish --no-bash --no-zsh
+# run the install
+~/projects/.fzf/install \
+    --no-key-bindings \
+    --no-completion \
+    --no-update-rc \
+    --no-fish \
+    --no-bash \
+    --no-zsh

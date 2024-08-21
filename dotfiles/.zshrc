@@ -1,40 +1,44 @@
 # Start in home directory (don't know a better fix for now)
 cd
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+
+
+################
+# Shell config
+################
+
+# Enable Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Load zinit plugin manager if it isn't installed alread. After the installation
-# is complete we can source the file and load some plugins
+# load plugin manager (zinit)
 ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
   mkdir -p "$(dirname $ZINIT_HOME)"
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+# reload the zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# install plugins
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light jeffreytse/zsh-vi-mode
 
-bindkey '^j' history-search-backward
-bindkey '^k' history-search-forward
-
-# Autoload completions
+# autoload completions
 autoload -U compinit && compinit
 
+# history settings
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
+# options
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -43,26 +47,51 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# colors for completions
 zstyle ':completions:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completions:*' list-colors '${(s.:.)LS_COLORS}'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# source powerlevel 10k config
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+
+################
+# User section
+################
+
+# pyenv path variable
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+# fzf path directly to compiled binary
 export PATH="$PATH:$HOME/projects/.fzf/bin"
-export PATH="$PATH:/opt/go/bin"
-export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# local binaries
+export PATH="$PATH:~/.local/bin"
+
+# additional binaries
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/usr/bin"
+export PATH="$PATH:/sbin"
+export PATH="$PATH:/bin"
+
+# custom alias
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
 
+# activate zsh extension of fzf
+# TODO: isnt this supposed to be in the install script?
 eval "$(fzf --zsh)"
 
+# reload fzf zsh extension
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+# TODO: isnt this supposed to be in the install script?
 eval "$(pyenv init -)"

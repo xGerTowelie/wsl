@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# NOTE: 
-# This script will install nvim from package since
-# the distributed apt package isn't under maintainance
-# any more.
-
-# install nvim
+# download latest binary
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-rm "$HOME/nvim-linux64.tar.gz"
 
-# install configuration
-mkdir -p "$HOME/.config/nvim"
-cp -r "$HOME/projects/wsl/config/nvim" "$HOME/.config"
+# unpack tar ball
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+# remove tar ball
+rm nvim-linux64.tar.gz
+
+# move configuration
+cp -p -r ~/projects/wsl/config/nvim ~/.config
