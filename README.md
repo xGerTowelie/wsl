@@ -19,7 +19,7 @@ To run the whole script make sure, that its executable.
 change to your repository
 
 ```
-sudo add-apt-repository ppa:wslutilities/wslu \
+sudo add-apt-repository ppa:wslutilities/wslu -y \
   && sudo apt update && sudo apt upgrade -y \
   && sudo apt install gh wslu -y \
   && ssh-keygen \
