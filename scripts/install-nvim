@@ -1,17 +1,10 @@
 #!/bin/bash
 
-# download latest binary
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+# clone source
+gh repo clone neovim/neovim ~/projects/nvim
 
-# unpack tar ball
-sudo tar -xzf nvim-linux64.tar.gz
-
-# move binary
-cp nvim-linux64/bin/nvim ~/.local/bin
-
-# remove tar ball and folder
-rm nvim-linux64.tar.gz
-rm nvim-linux64 -rf
+# compile source
+make CMAKE_BUILD_TYPE=RelWithDebInfo
 
 # move personal nvim configuration
 cp -p -r ~/projects/wsl/config/nvim ~/.config

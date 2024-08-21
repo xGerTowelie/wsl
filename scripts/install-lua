@@ -16,5 +16,7 @@ cp -p lua  ~/.local/bin
 # leave install folder
 cd ../..
 
-# delete old tar and folder
-rm -rf lua-5.4.7 lua-5.4.7.tar.gz
+# delete old tar ball
+mv lua-5.4.7 ~/projects/lua 
+
+rm -rf lua-5.4.7.tar.gz
