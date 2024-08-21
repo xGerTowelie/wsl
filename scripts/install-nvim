@@ -4,10 +4,14 @@
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 
 # unpack tar ball
-sudo tar -C ~/.local/bin -xzf nvim-linux64.tar.gz
+sudo tar -xzf nvim-linux64.tar.gz
 
-# remove tar ball
+# move binary
+cp nvim-linux64/bin/nvim ~/.local/bin
+
+# remove tar ball and folder
 rm nvim-linux64.tar.gz
+rm nvim-linux64 -rf
 
-# move configuration
+# move personal nvim configuration
 cp -p -r ~/projects/wsl/config/nvim ~/.config
