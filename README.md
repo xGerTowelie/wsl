@@ -23,6 +23,6 @@ sudo apt update && sudo apt upgrade -y \
   && sudo apt install gh \
   && ssh-keygen \
   && gh auth login \
-  && gh repo clone wsl ~/projects/wsl
+  && gh repo clone wsl ~/projects/wsl \
   && ~/projects/wsl/install
 ```
