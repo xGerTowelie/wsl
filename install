@@ -18,11 +18,18 @@ cp "$HOME/projects/wsl/dotfiles/.p10k.zsh" ~/.p10k.zsh
 "$HOME/projects/wsl/scripts/install-python"
 
 # setup git
-git config --global user.name "Towelie"
-git config --global user.email "marcelmaier1996@outlook.de"
+read -p "Git user:" user
+read -p "Git emai:" email
+
+git config --global user.name $user
+git config --global user.email $email
 git config --global init.defaultBranch "main"
 git config --global pull.rebase false
-git config --global core.editor "nvim"
+
+read -p "Nvim as git editor? (y/n)" editor
+if [[ "$editor" == "y" ]]; then
+    git config --global core.editor "nvim"
+fi
 
 # change shell to zsh
 chsh $USER -s /bin/zsh

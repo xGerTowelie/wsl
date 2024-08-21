@@ -1,38 +1,28 @@
-# Reinstall WSL
 
-```powershell
-wsl --terminate Ubuntu-24.04 ; wsl --unregister Ubuntu-24.04 ; wsl --install -d Ubuntu-24.04
-```
-
-# Installation WSL
+## WSL Setup
+### Installation (initial)
 
 ```powershell
 wsl --install -d Ubuntu-24.04
 ```
 
-# Initiale Einrichtung
+### Reinstallation
 
-## Einrichtung SSH
+```powershell
+wsl --terminate Ubuntu-24.04 ; wsl --unregister Ubuntu-24.04 ; wsl --install -d Ubuntu-24.04
+```
+## Installer Script
+
+To run the whole script make sure, that its executable.
+
+**NOTE**:
+change to your repository
 
 ```
-sudo apt update && sudo apt upgrade -y && \
-sudo apt install gh && \
-ssh-keygen && \
-gh auth login && \
-git clone git@github.com:xGerTowelie/wsl.git ~/projects/wsl && \
-~/projects/wsl/install
+sudo apt update && sudo apt upgrade -y \
+  && sudo apt install gh \
+  && ssh-keygen \
+  && gh auth login \
+  && gh repo clone wsl ~/projects/wsl
+  && ~/projects/wsl/install
 ```
-
-tasks to do:
-- programs:
-	- fzf
-
-- change nvim config to install mason packages automatically
-	- tailwindcss
-	- eslint-lsp
-	- mkdnflow
-	- ...
-
-- install go
-- install teleport
-- setup teleport in zshrc

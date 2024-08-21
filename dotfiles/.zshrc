@@ -58,7 +58,6 @@ alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
-alias jupyter-notebook="~/.local/bin/jupyter-notebook --no-browser"
 
 eval "$(fzf --zsh)"
 
