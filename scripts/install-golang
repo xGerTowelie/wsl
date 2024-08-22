@@ -4,8 +4,8 @@
 wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
 
 # unpack tar ball
-sudo tar -C ./local/bin -xzf go1.23.0.linux-amd64.tar.gz
+sudo tar -C ~/.local/bin -xzf go1.23.0.linux-amd64.tar.gz
 
 # delete tar ball
-rm "$HOME/go1.23.0.linux-amd64.tar.gz"
+rm go1.23.0.linux-amd64.tar.gz
 

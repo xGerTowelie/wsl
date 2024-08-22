@@ -71,7 +71,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/projects/fzf/bin"
 
 # local binaries
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # additional binaries
 export PATH="$PATH:/usr/local/sbin"
