@@ -68,7 +68,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # fzf path directly to compiled binary
-export PATH="$PATH:$HOME/projects/.fzf/bin"
+export PATH="$PATH:$HOME/projects/fzf/bin"
 
 # local binaries
 export PATH="$PATH:~/.local/bin"

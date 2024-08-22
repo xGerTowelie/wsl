@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # remove current files
-rm "$HOME/.zshrc"
-rm "$HOME/.p10k.zsh"
+rm ~/.zshrc
+rm ~/.p10k.zsh
 
 # copy from repo
-cp ./dotfiles/.zshrc "$HOME/.zshrc"
-cp ./dotfiles/.p10k.zsh "$HOME/.p10k.zsh"
+cp ./dotfiles/.zshrc ~/.zshrc
+cp ./dotfiles/.p10k.zsh ~/.p10k.zsh
