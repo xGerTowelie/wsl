@@ -64,6 +64,9 @@ zstyle ':completions:*' list-colors '${(s.:.)LS_COLORS}'
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
+# nvim path
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # fzf path directly to compiled binary
 export PATH="$PATH:$HOME/projects/.fzf/bin"
 
