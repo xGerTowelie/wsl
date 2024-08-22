@@ -67,6 +67,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 # nvim path
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
+# go path
+export PATH="$PATH:$HOME/.local/bin/go/bin"
+
 # fzf path directly to compiled binary
 export PATH="$PATH:$HOME/projects/fzf/bin"
 
