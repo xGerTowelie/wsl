@@ -3,7 +3,9 @@
 # remove current files
 rm ~/.zshrc
 rm ~/.p10k.zsh
+rm ~/.tmux.conf
 
 # copy from repo
 cp ./dotfiles/.zshrc ~/.zshrc
 cp ./dotfiles/.p10k.zsh ~/.p10k.zsh
+cp ./dotfiles/.tmux.conf ~/.tmux.conf
