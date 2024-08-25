@@ -91,6 +91,7 @@ alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
 alias fm='python3 /home/towelie/projects/filemanager/fm.py $(pwd)'
+alias gopen="wslview $(git remote get-url origin | sed 's/git@/https:\/\//' | sed 's/\.git//')"
 
 # activate zsh extension of fzf
 # TODO: isnt this supposed to be in the install script?
