@@ -90,6 +90,7 @@ alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
+alias fm='python3 /home/towelie/projects/filemanager/fm.py $(pwd)'
 
 # activate zsh extension of fzf
 # TODO: isnt this supposed to be in the install script?
