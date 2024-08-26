@@ -1,8 +1,3 @@
-# Start in home directory (don't know a better fix for now)
-cd
-
-
-
 ################
 # Shell config
 ################
