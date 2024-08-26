@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# clone tpm from source
+gh repo clone tmux-plugins/tpm ~/.tmux/plugins/tpm
