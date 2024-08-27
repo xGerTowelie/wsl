@@ -13,6 +13,8 @@ mkdir ~/.local/bin
 
 # moving dotfiles
 cp ~/projects/wsl/dotfiles/.zshrc ~/.zshrc
+cp ~/projects/wsl/dotfiles/.tmux.conf ~/.tmux.conf
+cp ~/projects/wsl/dotfiles/.tp.conf ~/.tp.conf
 cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # install from source or prebuild binaries
