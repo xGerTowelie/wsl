@@ -80,12 +80,13 @@ export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
 
 # custom alias
+alias gacp="git add . && git commit && git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
-alias fm="/home/$HOME/projects/filemanager/dist/fm $(pwd)"
+alias fm="/$HOME/projects/filemanager/dist/fm/fm $(pwd)"
 alias gopen='wslview $(git remote get-url origin | sed "s/:/\//" | sed "s/git@/https:\/\//" | sed "s/\.git//")'
 
 # activate zsh extension of fzf

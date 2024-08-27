@@ -4,8 +4,10 @@
 rm ~/.zshrc
 rm ~/.p10k.zsh
 rm ~/.tmux.conf
+rm ~/.tp.conf
 
 # copy from repo
 cp ./dotfiles/.zshrc ~/.zshrc
 cp ./dotfiles/.p10k.zsh ~/.p10k.zsh
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
+cp ./dotfiles/.tp.conf ~/.tp.conf
