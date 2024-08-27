@@ -27,3 +27,8 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
   && gh repo clone wsl ~/projects/wsl \
   && ~/projects/wsl/install
 ```
+
+## Todo
+- [ ] add binary for filemanager
+- [ ] add binary for todos
+- [ ] autoinstall lsps, linter, ect. for mason
