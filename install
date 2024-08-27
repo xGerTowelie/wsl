@@ -23,6 +23,7 @@ cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
 ~/projects/wsl/scripts/install-python
 ~/projects/wsl/scripts/install-golang
 ~/projects/wsl/scripts/install-lua
+~/projects/wsl/scripts/install-tmux
 
 # setup git
 read -p "Git display user:" user
