@@ -85,7 +85,7 @@ alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
 alias vim="nvim"
-alias fm='python3 /home/towelie/projects/filemanager/dist/fm $(pwd)'
+alias fm="/home/$HOME/projects/filemanager/dist/fm $(pwd)"
 alias gopen='wslview $(git remote get-url origin | sed "s/:/\//" | sed "s/git@/https:\/\//" | sed "s/\.git//")'
 
 # activate zsh extension of fzf
