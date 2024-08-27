@@ -6,7 +6,7 @@ sudo apt install -y \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ \
     libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev unzip \
     libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev zsh build-essential \
-    pkg-config unzip curl doxygen tree xsel python3-urwid
+    pkg-config unzip curl doxygen tree xsel python3-urwid pipenv 
 
 # create local bin folder
 mkdir ~/.local/bin
