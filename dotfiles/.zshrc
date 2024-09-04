@@ -1,6 +1,11 @@
+plugins=(... ssh-agent)
+
+zstyle :omz:plugins:ssh-agent identities ~/.ssh/id_ed25519
+
 ################
 # Shell config
 ################
+
 
 # Enable Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -83,7 +88,7 @@ export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
 
 # custom alias
-alias gacp="[ -d .git ] && git add . && git commit && git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias gacp="[ -d .git ] && git add . && git commit && git push origin $([ -d .git ] && git rev-parse --abbrev-ref HEAD)"
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
@@ -102,11 +107,4 @@ eval "$(fzf --zsh)"
 
 eval "$(pyenv init -)"
 
-# Start ssh-agent if not already running
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
-fi
-
-# Add SSH key if not already added
-ssh-add -l > /dev/null || ssh-add ~/.ssh/id_ed25519
 
