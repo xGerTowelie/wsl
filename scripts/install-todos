@@ -7,7 +7,7 @@ gh repo clone todos ~/projects/todos/
 cd ~/projects/todos/
 
 # install dependencies
-pipenv install -y
+pipenv install
 
 # activate for shell
 pipenv shell
