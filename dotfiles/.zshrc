@@ -63,6 +63,7 @@ zstyle ':completions:*' list-colors '${(s.:.)LS_COLORS}'
 # pyenv path variable
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # nvim path
 export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -105,6 +106,5 @@ eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-eval "$(pyenv init -)"
 
 

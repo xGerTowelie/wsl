@@ -9,14 +9,8 @@ cd ~/projects/filemanager/
 # install dependencies
 pipenv install
 
-# activate for shell
-pipenv shell
-
-# install build dependency
-pip install pyinstaller
-
-# build binary
-pyinstaller --onefile fm.py
+# run build in a subshell with active environment
+pipenv run pyinstaller --onefile fm.py
 
 # cd out of installation folder
 cd

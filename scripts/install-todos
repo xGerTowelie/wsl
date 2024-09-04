@@ -10,13 +10,7 @@ cd ~/projects/todos/
 pipenv install
 
 # activate for shell
-pipenv shell
-
-# install build dependency
-pip install pyinstaller
-
-# build binary
-pyinstaller --onefile todos.py
+pipenv run pyinstaller --onefile todos.py
 
 # cd out of installation folder
 cd
