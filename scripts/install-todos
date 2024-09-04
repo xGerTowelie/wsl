@@ -6,11 +6,8 @@ gh repo clone todos ~/projects/todos/
 # cd into folder
 cd ~/projects/todos/
 
-# install dependencies
-pipenv install
-
-# activate for shell
-pipenv run build
+# build project
+./build.sh
 
 # cd out of installation folder
 cd

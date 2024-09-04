@@ -3,14 +3,11 @@
 # clone repo
 gh repo clone filemanager ~/projects/filemanager/
 
-# cd into folder
+# cd into repo	
 cd ~/projects/filemanager/
 
-# install dependencies
-pipenv install
+# build
+./build.sh
 
-# run build in a subshell with active environment
-pipenv run build
-
-# cd out of installation folder
+# cd out of repo
 cd
