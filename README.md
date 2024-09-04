@@ -32,3 +32,6 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
 - [ ] add binary for filemanager
 - [ ] add binary for todos
 - [ ] autoinstall lsps, linter, ect. for mason
+- [ ] fix git commit bug for vim
+- [ ] fix which-key warning
+

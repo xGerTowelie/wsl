@@ -16,8 +16,8 @@ return {
             return '%2l:%-2v'
         end
         local wk = require('which-key')
-        wk.register({
-            ['<leader>j'] = { "<cmd>lua require('mini.jump2d').start()<CR>", '[J]ump' },
+        wk.add({
+            { '<leader>j', "<cmd>lua require('mini.jump2d').start()<CR>", desc = '[J]ump' },
         })
     end,
 }
