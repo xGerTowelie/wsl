@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# clone repo
+gh repo clone todos ~/projects/todos/
+
+# cd into folder
+cd ~/projects/todos/
+
+# install dependencies
+pyenv install -y
+
+# activate for shell
+pyenv shell
+
+# install build dependency
+pip install pyinstaller
+
+# build binary
+pyinstaller --onefile todos.py
+
+# cd out of installation folder
+cd
