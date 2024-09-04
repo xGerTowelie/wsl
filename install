@@ -6,7 +6,7 @@ sudo apt install -y \
     ninja-build gettext libtool libtool-bin autoconf automake cmake g++ \
     libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev unzip \
     libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev zsh build-essential \
-    pkg-config unzip curl doxygen tree xsel python3-urwid pipenv 
+    pkg-config unzip curl doxygen tree xsel python3-urwid pip pipenv 
 
 # create local bin folder
 mkdir ~/.local/bin
@@ -24,6 +24,9 @@ cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
 ~/projects/wsl/scripts/install-golang
 ~/projects/wsl/scripts/install-lua
 ~/projects/wsl/scripts/install-tmux
+
+# build personal projects from source
+~/projects/wsl/scripts/install-teleport
 
 # setup git
 read -p "Git display user:" user

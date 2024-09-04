@@ -14,7 +14,7 @@ make all test
 cp -p lua  ~/.local/bin
 
 # leave install folder
-cd ../..
+cd
 
 # delete old tar ball
 mv lua-5.4.7 ~/projects/lua 

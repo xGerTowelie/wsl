@@ -4,7 +4,7 @@
 curl https://pyenv.run | bash
 
 # install python version
-pyenv install 3.7
+pyenv install 3.9.19
 
 # set global version
-pyenv global 3.7
+pyenv global 3.9.19
