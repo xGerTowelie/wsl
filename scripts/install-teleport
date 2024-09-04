@@ -4,7 +4,4 @@
 gh repo clone teleport ~/projects/teleport/
 
 # create binary
-go build main.go
-
-# copy binary to path folder
-cp ~/projects/teleport/main ~/.local/bin/tp
+~/.local/bin/go build ~/projects/teleport/main.go -o ~/.local/bin/tp
