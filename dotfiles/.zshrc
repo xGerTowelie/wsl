@@ -102,6 +102,11 @@ eval "$(fzf --zsh)"
 
 eval "$(pyenv init -)"
 
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+# Start ssh-agent if not already running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    eval "$(ssh-agent -s)"
+fi
+
+# Add SSH key if not already added
+ssh-add -l > /dev/null || ssh-add ~/.ssh/id_ed25519
 
