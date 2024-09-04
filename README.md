@@ -28,7 +28,8 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
   && gh auth login \
   && gh repo clone wsl ~/projects/wsl \
   && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc \
-  && echo 'export PYENV_ROOT="$HOME/.pyenv" \n [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" \
+  && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc \
+  && echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc \
   && source ~/.bashrc \
   && ~/projects/wsl/install
 ```
