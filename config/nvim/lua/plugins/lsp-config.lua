@@ -76,7 +76,7 @@ return {
         }
 
         require('mason').setup({
-            ensure_installed = { 'lua_ls' },
+            ensure_installed = { 'lua_ls', 'tsserver', 'eslint', 'prettier', 'markdownlint', 'prismals' },
         })
 
         local ensure_installed = vim.tbl_keys(servers or {})
