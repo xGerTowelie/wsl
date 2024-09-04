@@ -10,7 +10,7 @@ cd ~/projects/filemanager/
 pipenv install
 
 # run build in a subshell with active environment
-pipenv run pyinstaller --onefile fm.py
+pipenv run build
 
 # cd out of installation folder
 cd

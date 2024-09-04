@@ -30,8 +30,13 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
   && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc \
   && echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc \
   && echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc \
-  && source ~/.bashrc \
-  && ~/projects/wsl/install
+  && source ~/.bashrc
+```
+
+After start the installation script:
+
+```
+~/projects/wsl/install
 ```
 
 ## Todo
