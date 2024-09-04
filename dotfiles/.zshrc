@@ -83,7 +83,7 @@ export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
 
 # custom alias
-alias gacp="git add . && git commit && git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias gacp="[ -d .git ] && git add . && git commit && git push origin $(git rev-parse --abbrev-ref HEAD)"
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
@@ -100,5 +100,8 @@ eval "$(fzf --zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# TODO: isnt this supposed to be in the install script?
 eval "$(pyenv init -)"
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
