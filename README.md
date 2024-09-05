@@ -27,13 +27,8 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
   && ssh-add ~/.ssh/id_ed25519 \
   && gh auth login \
   && gh repo clone wsl ~/projects/wsl \
-  && source ~/.bashrc
-```
-
-After start the installation script:
-
-```
-~/projects/wsl/install
+  && source ~/.bashrc \
+  && ~/projects/wsl/install
 ```
 
 ## Todo
