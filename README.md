@@ -20,14 +20,13 @@ change to your repository
 
 ```
 sudo add-apt-repository ppa:wslutilities/wslu -y \
-  && sudo apt update && sudo apt upgrade -y \
   && sudo apt install gh wslu -y \
   && ssh-keygen -f ~/.ssh/id_ed25519 \
   && eval "$(ssh-agent -s)" \
   && ssh-add ~/.ssh/id_ed25519 \
   && gh auth login \
   && gh repo clone wsl ~/projects/wsl \
-  && source ~/.bashrc \
+  && sudo apt update && sudo apt upgrade -y \
   && ~/projects/wsl/install
 ```
 
