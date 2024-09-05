@@ -74,6 +74,9 @@ export PATH="$PATH:$HOME/.local/bin/go/bin"
 # fzf path directly to compiled binary
 export PATH="$PATH:$HOME/projects/fzf/bin"
 
+# pm path
+export PATH="$PATH:$HOME/projects/pm/dist"
+
 # todos path
 export PATH="$PATH:$HOME/projects/todos/dist"
 
