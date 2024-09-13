@@ -20,6 +20,7 @@ cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # install from source or prebuild binaries
 ~/projects/wsl/scripts/install-fzf
+~/projects/wsl/scripts/install-docker
 ~/projects/wsl/scripts/install-nvim
 ~/projects/wsl/scripts/install-python
 ~/projects/wsl/scripts/install-golang
