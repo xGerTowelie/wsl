@@ -1,3 +1,8 @@
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_ed25519
+fi
+
 plugins=(... ssh-agent)
 
 zstyle :omz:plugins:ssh-agent identities ~/.ssh/id_ed25519
@@ -100,8 +105,8 @@ alias c="xsel --output --clipboard"
 alias vim="nvim"
 alias fm="$HOME/projects/filemanager/dist/fm $(pwd)"
 alias gopen='wslview $(git remote get-url origin | sed "s/:/\//" | sed "s/git@/https:\/\//" | sed "s/\.git//")'
-
-# activate zsh extension of fzf
+alias vault='cd ~/vaults && vim $(find . -maxdepth 1 -mindepth 1 -type d | sed "s|^\./||" | fzf)'
+# activate zsh extension of fzalias vault='cd ~/vaults && vim $(find . -maxdepth 1 -mindepth 1 -type d | sed "s|^\./||" | fzf)'f
 # TODO: isnt this supposed to be in the install script?
 eval "$(fzf --zsh)"
 
@@ -110,4 +115,4 @@ eval "$(fzf --zsh)"
 
 
 
-
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
