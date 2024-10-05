@@ -13,13 +13,12 @@ require('lspconfig').openedge_ls.setup({
     filetypes = { 'progress' },
 })
 
-require('lspconfig').tsserver.setup({})
+require('lspconfig').ts_ls.setup({})
 require('lspconfig').tailwindcss.setup({})
 require('lspconfig').eslint.setup({})
 
-local lspconfig = require('lspconfig')
 local lombok_jar_path = '/home/marcel/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar'
-lspconfig.jdtls.setup({
+require('lspconfig').jdtls.setup({
     cmd = {
         'java',
         '-javaagent:' .. lombok_jar_path,
