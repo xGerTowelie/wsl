@@ -146,4 +146,7 @@ if prompt_yes_no "Do you want to change your default shell to zsh?"; then
     fi
 fi
 
+# Since it was cloned over http set it to ssh after
+git remote set-url origin git@github.com:xGerTowelie/wsl.git
+
 print_colored "Setup complete!"
