@@ -47,6 +47,8 @@ decrypt_ssh_key() {
 # Decrypt and place SSH key
 decrypt_ssh_key
 
+sudo add-apt-repository ppa:wslutilities/wslu -y
+
 # Update package lists
 print_colored "Updating package lists..."
 sudo apt update

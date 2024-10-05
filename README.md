@@ -1,4 +1,4 @@
-
+# WSL Autoinstall script
 ## WSL Setup
 ### Installation (initial)
 
@@ -13,16 +13,11 @@ wsl --terminate Ubuntu-24.04 ; wsl --unregister Ubuntu-24.04 ; wsl --install -d 
 ```
 ## Installer Script
 
-To run the whole script make sure, that its executable.
-
-**NOTE**:
-change to your repository
+> [!Warning]
+> change to your repository 
 
 ```
-sudo add-apt-repository ppa:wslutilities/wslu -y \
-  && sudo apt install gh wslu -y \
-  && git clone git@github.com:xGerTowelie/wsl.git \
-  && ~/projects/wsl/install
+  git clone git@github.com:xGerTowelie/wsl.git ~/projects/wsl/ && ~/projects/wsl/install
 ```
 
 ## Todo
