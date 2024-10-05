@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e  # Exit immediately if a command exits with a non-zero status
+
+DOTFILES_DIR="./dotfiles"
+SSH_KEY="$HOME/.ssh/id_ed25519"
+ENCRYPTED_KEY="$DOTFILES_DIR/encrypted_id_ed25519.gpg"
+
+# Function to print colored output
+print_colored() {
+    echo -e "\e[1;34m$1\e[0m"
+}
+
+# Check if GPG is installed
+if ! command -v gpg &> /dev/null; then
+    print_colored "Error: GPG is not installed. Please install GPG and try again."
+    exit 1
+fi
+
+# Check if the SSH key exists
+if [ ! -f "$SSH_KEY" ]; then
+    print_colored "Error: SSH key not found at $SSH_KEY"
+    exit 1
+fi
+
+# Encrypt the SSH key
+print_colored "Encrypting SSH key..."
+gpg --symmetric --cipher-algo AES256 --output "$ENCRYPTED_KEY" "$SSH_KEY"
+
+print_colored "SSH key encrypted and saved to $ENCRYPTED_KEY"
+print_colored "Please remember the passphrase you used for encryption."
