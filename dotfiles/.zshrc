@@ -98,11 +98,23 @@ export PATH="$PATH:/bin"
 
 # custom alias
 alias gacp="[ -d .git ] && git add . && git commit && git push origin $([ -d .git ] && git rev-parse --abbrev-ref HEAD)"
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit"
+alias gd="git diff"
+alias gl="git log --decorate --oneline --graph"
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
+alias n="npm run"
 alias vim="nvim"
+alias tk="tmux kill-session"
+alias tl="tmux list-session"
+alias duu="du -h -d 1 | sort -h"
+alias aim="~/projects/v0-filemerge/main -config=$HOME/projects/v0-filemerge/config.json"
+alias reload="source ~/.zshrc"
 alias fm="$HOME/projects/filemanager/dist/fm $(pwd)"
 alias gopen='wslview $(git remote get-url origin | sed "s/:/\//" | sed "s/git@/https:\/\//" | sed "s/\.git//")'
 alias vault='cd ~/vaults && vim $(find . -maxdepth 1 -mindepth 1 -type d | sed "s|^\./||" | fzf)'

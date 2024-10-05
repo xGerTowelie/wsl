@@ -1,47 +1,98 @@
 #!/bin/bash
 
-# install packages
-sudo apt install -y \
-    nodejs npm ripgrep libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
-    ninja-build gettext libtool libtool-bin autoconf automake cmake g++ \
-    libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev unzip \
-    libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev zsh build-essential \
-    pkg-config unzip curl doxygen tree xsel python3-urwid pip pipenv \
-    python3 python3-pip python3-venv 
+set -e  # Exit immediately if a command exits with a non-zero status
 
-# create local bin folder
-mkdir ~/.local/bin
+# Function to print colored output
+print_colored() {
+    echo -e "\e[1;34m$1\e[0m"
+}
 
-# moving dotfiles
-cp ~/projects/wsl/dotfiles/.zshrc ~/.zshrc
-cp ~/projects/wsl/dotfiles/.tmux.conf ~/.tmux.conf
-cp ~/projects/wsl/dotfiles/.tp.conf ~/.tp.conf
-cp ~/projects/wsl/dotfiles/.p10k.zsh ~/.p10k.zsh
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
 
-# install from source or prebuild binaries
-~/projects/wsl/scripts/install-fzf
-~/projects/wsl/scripts/install-docker
-~/projects/wsl/scripts/install-nvim
-~/projects/wsl/scripts/install-python
-~/projects/wsl/scripts/install-golang
-~/projects/wsl/scripts/install-lua
-~/projects/wsl/scripts/install-tmux
+# Function to prompt user for yes/no input
+prompt_yes_no() {
+    while true; do
+        read -p "$1 (y/n): " yn
+        case $yn in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
 
-# build personal projects from source
-~/projects/wsl/scripts/install-teleport
-~/projects/wsl/scripts/install-todos
-~/projects/wsl/scripts/install-filemanager
+# Update package lists
+print_colored "Updating package lists..."
+sudo apt update
 
-# setup git
-read -p "Git display user:" user
-read -p "Git emai:" email
+# Install packages from requirements file
+print_colored "Installing packages..."
+if [ -f "./requirements.txt" ]; then
+    while IFS= read -r package || [[ -n "$package" ]]; do
+        if ! dpkg -s "$package" >/dev/null 2>&1; then
+            sudo apt install -y "$package"
+        else
+            print_colored "$package is already installed. Skipping..."
+        fi
+    done < "./requirements.txt"
+else
+    print_colored "Warning: requirements.txt not found. Skipping package installation."
+fi
 
-git config --global user.name $user
-git config --global user.email $email
+# Create local bin folder
+print_colored "Creating local bin folder..."
+mkdir -p ~/.local/bin
+
+# Moving dotfiles
+print_colored "Moving dotfiles..."
+if [ -d "./dotfiles" ]; then
+    for file in ./dotfiles/.*; do
+        if [ -f "$file" ]; then
+            filename=$(basename "$file")
+            cp "$file" ~/"$filename"
+            print_colored "Copied $filename to home directory."
+        fi
+    done
+else
+    print_colored "Warning: ./dotfiles directory not found. Skipping dotfile installation."
+fi
+
+# Run installation scripts
+print_colored "Running installation scripts..."
+if [ -d "./scripts" ]; then
+    for script in ./scripts/*; do
+        if [ -f "$script" ] && [ -x "$script" ]; then
+            print_colored "Running $(basename "$script")..."
+            "$script"
+        fi
+    done
+else
+    print_colored "Warning: ./scripts directory not found. Skipping custom installations."
+fi
+
+# Setup git
+print_colored "Setting up git..."
+read -p "Git display name: " git_name
+read -p "Git email: " git_email
+
+git config --global user.name "$git_name"
+git config --global user.email "$git_email"
 git config --global init.defaultBranch "main"
 git config --global pull.rebase false
 git config --global core.editor "nvim"
 
-# change shell to zsh
-chsh $USER -s /bin/zsh
-exec zsh
+# Change shell to zsh
+if prompt_yes_no "Do you want to change your default shell to zsh?"; then
+    print_colored "Changing shell to zsh..."
+    if command_exists zsh; then
+        chsh -s "$(which zsh)" "$USER"
+        print_colored "Shell changed to zsh. Please log out and log back in for the changes to take effect."
+    else
+        print_colored "Error: zsh is not installed. Please install it first."
+    fi
+fi
+
+print_colored "Setup complete!"
