@@ -13,4 +13,4 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
 
 # move personal nvim configuration
-cp -p -r ~/projects/wsl/config/nvim ~/.config
+# cp -p -r ~/projects/wsl/config/nvim ~/.config
