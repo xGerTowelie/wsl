@@ -5,6 +5,8 @@ set -e  # Exit immediately if a command exits with a non-zero status
 DOTFILES_DIR="./dotfiles"
 HOME_DIR="$HOME"
 CONFIG_DIR="$HOME/.config"
+ENCRYPTED_KEY="$DOTFILES_DIR/encrypted_id_ed25519.gpg"
+SSH_DIR="$HOME/.ssh"
 
 # Function to print colored output
 print_colored() {
@@ -26,6 +28,19 @@ prompt_yes_no() {
             * ) echo "Please answer yes or no.";;
         esac
     done
+}
+
+# Function to decrypt and place SSH key
+decrypt_ssh_key() {
+    if [ -f "$ENCRYPTED_KEY" ]; then
+        print_colored "Decrypting SSH key..."
+        mkdir -p "$SSH_DIR"
+        gpg --decrypt --output "$SSH_DIR/id_ed25519" "$ENCRYPTED_KEY"
+        chmod 600 "$SSH_DIR/id_ed25519"
+        print_colored "SSH key decrypted and placed in $SSH_DIR/id_ed25519"
+    else
+        print_colored "Warning: Encrypted SSH key not found. Skipping SSH key setup."
+    fi
 }
 
 # Update package lists
@@ -86,6 +101,9 @@ if [ -d "$DOTFILES_DIR/.config/nvim" ]; then
 else
     print_colored "Warning: Neovim config not found in $DOTFILES_DIR/.config/nvim. Skipping."
 fi
+
+# Decrypt and place SSH key
+decrypt_ssh_key
 
 # Run installation scripts
 print_colored "Running installation scripts..."
