@@ -1,13 +1,101 @@
 #!/bin/bash
 
-# remove current files
-rm ~/.zshrc
-rm ~/.p10k.zsh
-rm ~/.tmux.conf
-rm ~/.tp.conf
+set -e  # Exit immediately if a command exits with a non-zero status
 
-# copy from repo
-cp ./dotfiles/.zshrc ~/.zshrc
-cp ./dotfiles/.p10k.zsh ~/.p10k.zsh
-cp ./dotfiles/.tmux.conf ~/.tmux.conf
-cp ./dotfiles/.tp.conf ~/.tp.conf
+DOTFILES_DIR="./dotfiles"
+HOME_DIR="$HOME"
+
+# Function to print colored output
+print_colored() {
+    local color_code="$1"
+    shift
+    echo -e "\e[${color_code}m$*\e[0m"
+}
+
+# Function to prompt user for yes/no input
+prompt_yes_no() {
+    while true; do
+        read -p "$1 (y/n): " yn
+        case $yn in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
+
+# Function to compare files and store results
+compare_files() {
+    local home_to_repo=()
+    local repo_to_home=()
+    local max_length=0
+
+    for file in "$DOTFILES_DIR"/.*; do
+        # Skip . and .. directories
+        [[ "$(basename "$file")" =~ ^\.\.?$ ]] && continue
+
+        if [[ -f "$file" ]]; then
+            local basename=$(basename "$file")
+            local home_file="$HOME_DIR/$basename"
+
+            # Update max_length
+            if (( ${#basename} > max_length )); then
+                max_length=${#basename}
+            fi
+
+            if [[ -f "$home_file" ]]; then
+                if ! cmp -s "$file" "$home_file"; then
+                    if [[ "$home_file" -nt "$file" ]]; then
+                        home_to_repo+=("$basename")
+                    else
+                        repo_to_home+=("$basename")
+                    fi
+                fi
+            else
+                repo_to_home+=("$basename")
+            fi
+        fi
+    done
+
+    # Display results
+    if [ ${#home_to_repo[@]} -eq 0 ] && [ ${#repo_to_home[@]} -eq 0 ]; then
+        print_colored "1;32" "No changes detected."
+        exit 0
+    fi
+
+    print_colored "1;34" "Changes detected:"
+    for file in "${home_to_repo[@]}"; do
+        printf "\e[1;33m%-*s -> repo/%s\e[0m\n" "$max_length" "$file" "$file"
+    done
+    for file in "${repo_to_home[@]}"; do
+        printf "\e[1;33m%-*s <- repo/%s\e[0m\n" "$max_length" "$file" "$file"
+    done
+
+    # Prompt for applying changes
+    if prompt_yes_no "Do you want to apply all these changes?"; then
+        # Apply changes from home to repo
+        for file in "${home_to_repo[@]}"; do
+            cp "$HOME_DIR/$file" "$DOTFILES_DIR/$file"
+            print_colored "1;32" "Updated repo/$file"
+        done
+
+        # Apply changes from repo to home
+        for file in "${repo_to_home[@]}"; do
+            cp "$DOTFILES_DIR/$file" "$HOME_DIR/$file"
+            print_colored "1;32" "Updated ~/$file"
+        done
+
+        print_colored "1;32" "All changes applied successfully."
+    else
+        print_colored "1;31" "No changes were applied."
+    fi
+}
+
+# Check if dotfiles directory exists
+if [[ ! -d "$DOTFILES_DIR" ]]; then
+    print_colored "1;31" "Error: $DOTFILES_DIR directory not found."
+    exit 1
+fi
+
+# Run the comparison and sync process
+compare_files

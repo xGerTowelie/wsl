@@ -1,16 +1,10 @@
+# Start ssh agent and add key
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_ed25519
 fi
-
 plugins=(... ssh-agent)
-
 zstyle :omz:plugins:ssh-agent identities ~/.ssh/id_ed25519
-
-################
-# Shell config
-################
-
 
 # Enable Powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
