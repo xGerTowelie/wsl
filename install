@@ -2,6 +2,10 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status
 
+DOTFILES_DIR="./dotfiles"
+HOME_DIR="$HOME"
+CONFIG_DIR="$HOME/.config"
+
 # Function to print colored output
 print_colored() {
     echo -e "\e[1;34m$1\e[0m"
@@ -46,18 +50,41 @@ fi
 print_colored "Creating local bin folder..."
 mkdir -p ~/.local/bin
 
-# Moving dotfiles
-print_colored "Moving dotfiles..."
-if [ -d "./dotfiles" ]; then
-    for file in ./dotfiles/.*; do
-        if [ -f "$file" ]; then
-            filename=$(basename "$file")
-            cp "$file" ~/"$filename"
-            print_colored "Copied $filename to home directory."
+# Function to copy files and directories
+copy_items() {
+    local source_dir="$1"
+    local dest_dir="$2"
+
+    for item in "$source_dir"/{.,}*; do
+        local basename=$(basename "$item")
+        if [[ "$basename" != "." && "$basename" != ".." ]]; then
+            if [ -f "$item" ]; then
+                mkdir -p "$(dirname "$dest_dir/$basename")"
+                cp "$item" "$dest_dir/$basename"
+                print_colored "Copied $basename to $dest_dir"
+            elif [ -d "$item" ]; then
+                mkdir -p "$dest_dir/$basename"
+                copy_items "$item" "$dest_dir/$basename"
+            fi
         fi
     done
+}
+
+# Copy dotfiles
+print_colored "Copying dotfiles..."
+if [ -d "$DOTFILES_DIR" ]; then
+    copy_items "$DOTFILES_DIR" "$HOME_DIR"
 else
-    print_colored "Warning: ./dotfiles directory not found. Skipping dotfile installation."
+    print_colored "Warning: $DOTFILES_DIR directory not found. Skipping dotfile installation."
+fi
+
+# Copy Neovim config
+print_colored "Copying Neovim config..."
+if [ -d "$DOTFILES_DIR/.config/nvim" ]; then
+    mkdir -p "$CONFIG_DIR/nvim"
+    copy_items "$DOTFILES_DIR/.config/nvim" "$CONFIG_DIR/nvim"
+else
+    print_colored "Warning: Neovim config not found in $DOTFILES_DIR/.config/nvim. Skipping."
 fi
 
 # Run installation scripts
