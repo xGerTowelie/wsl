@@ -21,12 +21,7 @@ change to your repository
 ```
 sudo add-apt-repository ppa:wslutilities/wslu -y \
   && sudo apt install gh wslu -y \
-  && ssh-keygen -f ~/.ssh/id_ed25519 \
-  && eval "$(ssh-agent -s)" \
-  && ssh-add ~/.ssh/id_ed25519 \
-  && gh auth login \
-  && gh repo clone wsl ~/projects/wsl \
-  && sudo apt update && sudo apt upgrade -y \
+  && git clone git@github.com:xGerTowelie/wsl.git \
   && ~/projects/wsl/install
 ```
 
@@ -34,7 +29,6 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
 - [ ] add binary for filemanager
 - [ ] add binary for todos
 - [ ] autoinstall lsps, linter, ect. for mason
-- [ ] fix git commit bug for vim
-- [ ] fix which-key warning
+- [ ] reduce everything into just install script
 - [ ] integrate config folder into dotfiles ".config"
 
