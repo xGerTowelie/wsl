@@ -36,4 +36,5 @@ sudo add-apt-repository ppa:wslutilities/wslu -y \
 - [ ] autoinstall lsps, linter, ect. for mason
 - [ ] fix git commit bug for vim
 - [ ] fix which-key warning
+- [ ] integrate config folder into dotfiles ".config"
 
