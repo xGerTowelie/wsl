@@ -43,6 +43,9 @@ decrypt_ssh_key() {
     fi
 }
 
+# Decrypt and place SSH key
+decrypt_ssh_key
+
 # Update package lists
 print_colored "Updating package lists..."
 sudo apt update
@@ -60,6 +63,12 @@ if [ -f "./requirements.txt" ]; then
 else
     print_colored "Warning: requirements.txt not found. Skipping package installation."
 fi
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519 
+
+# Login Github
+gh auth login
 
 # Create local bin folder
 print_colored "Creating local bin folder..."
@@ -101,9 +110,6 @@ if [ -d "$DOTFILES_DIR/.config/nvim" ]; then
 else
     print_colored "Warning: Neovim config not found in $DOTFILES_DIR/.config/nvim. Skipping."
 fi
-
-# Decrypt and place SSH key
-decrypt_ssh_key
 
 # Run installation scripts
 print_colored "Running installation scripts..."
