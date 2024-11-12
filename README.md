@@ -17,7 +17,13 @@ wsl --terminate Ubuntu-24.04 ; wsl --unregister Ubuntu-24.04 ; wsl --install -d 
 > change to your repository 
 
 ```
-  git clone https://github.com/xGerTowelie/wsl.git ~/projects/wsl/ && ~/projects/wsl/install
+<<<<<<< HEAD
+  git clone https://github.com/xGerTowelie/wsl.git \
+  && cd ~/projects/wsl/ 
+  && ./install
+=======
+  git clone https://github.com/xGerTowelie/wsl.git ~/projects/wsl/ && cd ~/projects/wsl && ./install
+>>>>>>> 350ebc677b2b4e74290f1f42e195add3bc9b5ef0
 ```
 
 ## Todo
