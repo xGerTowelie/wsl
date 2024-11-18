@@ -18,6 +18,9 @@ return {
         -- see below for full list of optional dependencies 👇
     },
     opts = {
+        follow_url_func = function(url)
+            vim.cmd(':!wslview ' .. url)
+        end,
         workspaces = {
             {
                 name = 'personal',
