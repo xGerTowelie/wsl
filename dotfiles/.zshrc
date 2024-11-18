@@ -89,6 +89,8 @@ export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/usr/bin"
 export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 # custom alias
 alias gacp="[ -d .git ] && git add . && git commit && git push origin $([ -d .git ] && git rev-parse --abbrev-ref HEAD)"
@@ -112,6 +114,9 @@ alias reload="source ~/.zshrc"
 alias fm="$HOME/projects/filemanager/dist/fm $(pwd)"
 alias gopen='wslview $(git remote get-url origin | sed "s/:/\//" | sed "s/git@/https:\/\//" | sed "s/\.git//")'
 alias vault='cd ~/vaults && vim $(find . -maxdepth 1 -mindepth 1 -type d | sed "s|^\./||" | fzf)'
+alias godot='/mnt/d/Godot_v4.3-stable_win64.exe/Godot_v4.3-stable_win64.exe'
+alias ldk='lazydocker'
+
 # activate zsh extension of fzalias vault='cd ~/vaults && vim $(find . -maxdepth 1 -mindepth 1 -type d | sed "s|^\./||" | fzf)'f
 # TODO: isnt this supposed to be in the install script?
 eval "$(fzf --zsh)"
@@ -122,3 +127,15 @@ eval "$(fzf --zsh)"
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# bun completions
+[ -s "/home/towelie/.bun/_bun" ] && source "/home/towelie/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
