@@ -66,6 +66,7 @@ eval "$(pyenv init -)"
 
 # nvim path
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin/nvim"
 
 # go path
 export PATH="$PATH:$HOME/.local/bin/go/bin"
@@ -89,10 +90,18 @@ export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/usr/bin"
 export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
+
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
-# custom alias
+alias nvim-server="nvim --listen /tmp/nvimsocket"
+
+# node.js
+export FZF_DEFAULT_OPTS='--layout=reverse --border --preview-window=wrap --height=40%'
+alias n='jq -r ".scripts | keys[]" package.json | fzf --prompt="Select a script: " | xargs -r npm run'
+
+# git
 alias gacp="[ -d .git ] && git add . && git commit && git push origin $([ -d .git ] && git rev-parse --abbrev-ref HEAD)"
 alias gs="git status"
 alias ga="git add"
@@ -100,11 +109,12 @@ alias gaa="git add ."
 alias gc="git commit"
 alias gd="git diff"
 alias gl="git log --decorate --oneline --graph"
+
+# devops
 alias ls="ls --color"
 alias ll="ls -la"
 alias p="xsel --input --clipboard"
 alias c="xsel --output --clipboard"
-alias n="npm run"
 alias vim="nvim"
 alias tk="tmux kill-session"
 alias tl="tmux list-session"
