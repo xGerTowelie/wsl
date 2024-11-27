@@ -31,3 +31,5 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.opt.linebreak = false
 vim.opt.wrap = false
+
+vim.opt.colorcolumn = '90'

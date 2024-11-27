@@ -17,6 +17,37 @@ require('lspconfig').ts_ls.setup({})
 require('lspconfig').tailwindcss.setup({})
 require('lspconfig').eslint.setup({})
 
+--[[
+
+source: https://gist.github.com/lucasecdb/2baf6d328a10d7fea9ec085d868923a0
+
+1.) enable localhost mirroring in powershell (admin)
+
+    New-NetFirewallRule -DisplayName "Godot LSP" -Direction Inbound -Protocol TCP -LocalPort 6005 -Action Allow
+    New-NetFirewallRule -DisplayName "Godot DAP" -Direction Inbound -Protocol TCP -LocalPort 6006 -Action Allow
+
+2.) install lsp via nvim
+
+    sudo npm install -g godot-wsl-lsp
+
+3.) setup external editor in godot
+
+    {file} "+call cursor({line}. {col})
+
+4.) use nvim cmd:
+
+    @echo off
+    wsl wslpath "%1" > tmpfile
+    set /p filepath= < tmpfile
+    del tmpfile
+    wsl ~/.local/bin/nvr --servername /tmp/nvimsocket %filepath% %2
+
+--]]
+
+require('lspconfig').gdscript.setup({
+    cmd = { 'godot-wsl-lsp', '--useMirroredNetworking' },
+})
+
 local lombok_jar_path = '/home/marcel/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar'
 require('lspconfig').jdtls.setup({
     cmd = {

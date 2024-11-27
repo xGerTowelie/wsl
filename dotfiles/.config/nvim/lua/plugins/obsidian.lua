@@ -19,7 +19,8 @@ return {
     },
     opts = {
         follow_url_func = function(url)
-            vim.cmd(':!wslview ' .. url)
+            print(url)
+            vim.cmd(':!wslview "' .. url .. '"')
         end,
         workspaces = {
             {
