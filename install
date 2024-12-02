@@ -5,7 +5,8 @@ set -e  # Exit immediately if a command exits with a non-zero status
 DOTFILES_DIR="./dotfiles"
 HOME_DIR="$HOME"
 CONFIG_DIR="$HOME/.config"
-ENCRYPTED_KEY="$DOTFILES_DIR/encrypted_id_ed25519.gpg"
+ENCRYPTED_KEY="./ssh/encrypted_id_ed25519.gpg"
+PUBLIC_KEY="./ssh/id_ed25519.pub"
 SSH_DIR="$HOME/.ssh"
 
 # Function to print colored output
@@ -39,6 +40,8 @@ decrypt_ssh_key() {
         gpg --decrypt --output "$SSH_DIR/id_ed25519" "$ENCRYPTED_KEY"
         chmod 600 "$SSH_DIR/id_ed25519"
         print_colored "SSH key decrypted and placed in $SSH_DIR/id_ed25519"
+        print_colored "Copy public key"
+        cp "$PUBLIC_KEY" "$SSH_DIR"
     else
         print_colored "Warning: Encrypted SSH key not found. Skipping SSH key setup."
     fi
