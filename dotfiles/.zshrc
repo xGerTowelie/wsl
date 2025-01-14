@@ -130,3 +130,27 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+unalias sssh 2>/dev/null
+
+sssh() {
+    if [ $# -eq 0 ]; then
+        # Extract host names from SSH config file
+        # Remove comments, empty lines, and get only Host lines
+        # Exclude wildcards and patterns (lines containing * or ?)
+        host=$(grep "^Host " ~/.ssh/config | 
+               grep -v "[*?]" | 
+               sed 's/Host //' | 
+               tr ' ' '\n' | 
+               fzf --height 40% --reverse)
+        
+        if [ -n "$host" ]; then
+            # If a host was selected, connect with X11 forwarding
+            command ssh -X "$host"
+        fi
+    else
+        # If arguments were provided, pass them through to ssh
+        command ssh "$@"
+    fi
+}
+
+alias sssh="sssh"
