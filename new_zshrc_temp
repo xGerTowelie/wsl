@@ -1,0 +1,20 @@
+##################
+# Prompt at bottom
+##################
+
+# Ensure the prompt is at the bottom, while output is scrolled normally
+autoload -U colors && colors
+
+# Function to always print the prompt at the bottom
+# Ensure the prompt stays at the bottom of the screen
+function zle-line-init {
+  # Move the cursor to the bottom-left corner of the terminal window
+  echo -ne "\033[H"  # Move the cursor to the top-left
+  echo -ne "\033[999;1H"  # Move the cursor to the bottom of the screen
+}
+
+# Tell zsh to call `zle-line-init` each time the line is initialized
+zle -N zle-line-init
+
+# Override the behavior of Ctrl + L to clear the screen but keep the prompt at the bottom
+bindkey -s "^L" "clear && reset\n$(echo -ne '\033[999;1H')"
